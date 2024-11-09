@@ -18,7 +18,7 @@ module.exports = (env, argv) => {
     output: {
       path: dist,
       filename: '[name]-[contenthash].js',
-      publicPath: 'auto'
+      publicPath: '/'
     },
 
     resolve: {

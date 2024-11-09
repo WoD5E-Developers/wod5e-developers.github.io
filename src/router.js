@@ -17,9 +17,8 @@ const routes = [
   },
   // Add a component to redirect people from the old wod5e-docs site to the new one
   {
-    name: `${baseTitle} / 404`,
-    path: '/wod5e-docs/:catchAll(.*)*',
-    component: OverviewComponent
+    path: '/wod5e-docs/',
+    redirect: '/'
   },
   {
     name: `${baseTitle} / 404`,
