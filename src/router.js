@@ -3,6 +3,7 @@ import { createRouter, createWebHistory } from 'vue-router'
 
 // Main Components
 import OverviewComponent from '@/components/Overview/overview.vue'
+import ApiComponent from '@/components/API/api.vue'
 import NotFoundComponent from '@/components/NotFound/notfound.vue'
 
 // Variables
@@ -14,6 +15,11 @@ const routes = [
     name: `${baseTitle}`,
     path: '/',
     component: OverviewComponent
+  },
+  {
+    name: `${baseTitle} - API`,
+    path: '/api',
+    component: ApiComponent
   },
   // Add a component to redirect people from the old wod5e-docs site to the new one
   {

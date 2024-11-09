@@ -9,7 +9,8 @@ export default {
             isMenuVisible: false,
             navbarimg,
             links: [
-                { text: 'Overview', href: '/' }
+                { text: 'Overview', href: '/' },
+                { text: 'API', href: '/api' }
             ]
         }
     },
