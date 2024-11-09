@@ -5,10 +5,8 @@ const CssMinimizerPlugin = require('css-minimizer-webpack-plugin')
 const { VueLoaderPlugin } = require('vue-loader')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 
-
 const src = path.resolve(__dirname, 'src')
 const dist = path.resolve(__dirname, 'dist')
-
 
 module.exports = (env, argv) => {
   const IS_PRODUCTION = argv.mode === 'production'
@@ -20,7 +18,6 @@ module.exports = (env, argv) => {
       filename: '[name]-[contenthash].js',
       publicPath: '/'
     },
-
     resolve: {
       alias: {
         '@': src
@@ -29,8 +26,9 @@ module.exports = (env, argv) => {
     mode: argv.mode,
     devServer: {
       static: dist,
-      // to be able to visit dev server from phones and other computers in your network
+      // Enabled to be able to visit dev server from phones and other computers in the network
       allowedHosts: 'all',
+      // Fallback to browser history API
       historyApiFallback: true
     },
     plugins: [
@@ -42,7 +40,12 @@ module.exports = (env, argv) => {
       rules: [{
         test: /\.vue$/,
         loader: 'vue-loader',
-        exclude: /node_modules/
+        exclude: /node_modules/,
+        options: {
+          compilerOptions: {
+            whitespace: 'preserve'
+          }
+        }
       }, {
         test: /\.css$/,
         use: [
@@ -52,7 +55,7 @@ module.exports = (env, argv) => {
             options: {
               modules: {
                 localIdentName: '[local]--[hash:base64:6]',
-              },
+              }
             }
           }
         ]
@@ -83,21 +86,18 @@ module.exports = (env, argv) => {
             test: /[\\/]node_modules[\\/]/,
             name: 'node_modules',
             chunks: 'all',
-          },
-        },
-      },
-    },
+          }
+        }
+      }
+    }
   }
 
 
   if (IS_PRODUCTION) {
-    // put all CSS files to a single <link rel='stylesheet' href='...'>
+    // Put all CSS files to a single <link rel='stylesheet' href='...'>
     config.plugins.push(new MiniCssExtractPlugin({
       filename: '[contenthash].css'
     }))
-
-  } else {
-    // config.devtool = 'inline-source-map'
   }
 
   return config
