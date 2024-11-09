@@ -6,6 +6,7 @@ body {
 
 .page-body {
   padding: 120px 10px 10px 10px;
+  white-space: preserve-breaks;
 }
 
 @media (max-width: 650px) {
