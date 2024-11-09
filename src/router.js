@@ -17,10 +17,10 @@ const routes = [
   },
   // Add a component to redirect people from the old wod5e-docs site to the new one
   {
-    path: '/wod5e-docs/:catchAll(.*)*',
+    path: '/wod5e-docs/',
     beforeEnter (to, from, next) {
       // Stop Vue Router from loading the page
-      window.location.href = '/' // Redirect back to main page
+      window.location.href = '/' // Redirect back to the base page
     }
   },
   {
