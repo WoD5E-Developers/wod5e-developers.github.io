@@ -1,14 +1,14 @@
 :root {
-  --primary-color: rgb(72, 35, 87);
+  --primary-color: rgb(151, 43, 43);
   --secondary-color: #CCC;
 }
 
 a {
-  color: #c994fc;
+  color: #fc9494;
 }
 
 a:hover {
-  color: #bc78fc;
+  color: #eb3535;
 }
 
 button {
@@ -22,5 +22,9 @@ button {
 }
 
 button:hover {
-  background-color: rgb(37, 94, 160);
+  background-color: rgb(207, 87, 87);
+}
+
+h1, h2, h3, h4 {
+  margin-bottom: 0;
 }
