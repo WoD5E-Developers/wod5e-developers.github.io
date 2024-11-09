@@ -1,0 +1,26 @@
+:root {
+  --primary-color: rgb(72, 35, 87);
+  --secondary-color: #CCC;
+}
+
+a {
+  color: #c994fc;
+}
+
+a:hover {
+  color: #bc78fc;
+}
+
+button {
+  padding: 10px;
+  background-color: rgb(72, 129, 194);
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+button:hover {
+  background-color: rgb(37, 94, 160);
+}

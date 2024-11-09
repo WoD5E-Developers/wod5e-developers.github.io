@@ -1,0 +1,25 @@
+.content {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+}
+
+section {
+  max-width: 600px;
+  padding: 10px;
+}
+
+section h1 {
+  text-align: center;
+}
+
+.butterfly {
+  display: flex;
+}
+
+.butterfly img {
+  max-width: 550px;
+  margin-left: auto;
+  margin-right: auto;
+}

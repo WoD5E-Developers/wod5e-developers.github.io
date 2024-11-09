@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>WOD5E for FoundryVTT / 404</title>
+  <meta http-equiv="refresh" content="0; URL=/" />
+</head>
+<body>
+  <script>
+    // This script is necessary to handle all routes with client-side routing
+    var pathname = window.location.pathname;
+    if (!pathname.startsWith('/')) {
+      pathname = '/' + pathname;
+    }
+
+    window.location = '/' + '#' + pathname;
+  </script>
+</body>
+</html>
