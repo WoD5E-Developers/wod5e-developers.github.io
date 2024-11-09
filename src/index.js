@@ -2,6 +2,9 @@
 import { createApp } from 'vue'
 import router from './router.js'
 
+// Assets
+import icon from '@/assets/icon.ico'
+
 // Components
 import TemplateComponent from '@/components/Template/template.vue'
 
