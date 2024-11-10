@@ -15,8 +15,21 @@ export default {
         }
     },
     methods: {
-        toggleMenu() {
+        toggleMenu () {
             this.isMenuVisible = !this.isMenuVisible
+        },
+        closeMenu () {
+            this.isMenuVisible = false
+        },
+        handleOutsideClick (event) {
+            // If the user isn't clicking the nav element, close the menu
+            if (!this.$el.contains(event.target)) {
+                this.closeMenu()
+            }
         }
+    },
+    mounted () {
+        // Add an event listener to listen for user clicks
+        document.addEventListener('click', this.handleOutsideClick)
     }
 }

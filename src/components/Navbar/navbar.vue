@@ -10,7 +10,7 @@
         </ul>
         <div :class="$style['menu-icon']" @click="toggleMenu">&#9776;</div>
         <div :class="[$style['waffle-menu'], { [$style.show]: isMenuVisible }]" id="waffleMenu">
-            <router-link v-for="link in links" :key="link.text" :to="link.href">{{ link.text }}</router-link>
+            <router-link v-for="link in links" :key="link.text" :to="link.href" @click="closeMenu">{{ link.text }}</router-link>
         </div>
     </nav>
 </template>
