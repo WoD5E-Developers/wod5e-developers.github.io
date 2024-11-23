@@ -8,6 +8,9 @@ import icon from '@/assets/icon.ico'
 // Components
 import TemplateComponent from '@/components/Template/template.vue'
 
+// Mixins
+import CollapsibleMixin from '@/mixins/collapsible.js'
+
 // Import stylings and components
 import '@/global.css'
 
@@ -22,5 +25,6 @@ library.add(fas, far, fab)
 // Create, configure and mount the app
 const app = createApp(TemplateComponent)
 app.component('font-awesome-icon', FontAwesomeIcon)
+app.mixin(CollapsibleMixin)
 app.use(router)
 app.mount('#app')

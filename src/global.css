@@ -28,3 +28,23 @@ button:hover {
 h1, h2, h3, h4 {
   margin-bottom: 0;
 }
+
+.collapsible-container {
+  flex-grow: 0.5;
+}
+
+.collapsible-header {
+  font-weight: bold;
+  cursor: pointer;
+  margin-bottom: 5px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.collapsible-content {
+  border: 1px solid #ccc;
+  padding: 10px;
+  transition: max-height 0.3s ease;
+  overflow: hidden;
+}
