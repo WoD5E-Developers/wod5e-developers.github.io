@@ -1,18 +1,19 @@
-const path = require('path')
+import path from 'path'
+import HtmlWebpackPlugin from 'html-webpack-plugin'
+import MiniCssExtractPlugin from 'mini-css-extract-plugin'
+import CssMinimizerPlugin from 'css-minimizer-webpack-plugin'
+import { VueLoaderPlugin } from 'vue-loader'
+import { CleanWebpackPlugin } from 'clean-webpack-plugin'
 
-const HtmlWebpackPlugin = require('html-webpack-plugin')
-const MiniCssExtractPlugin = require('mini-css-extract-plugin')
-const CssMinimizerPlugin = require('css-minimizer-webpack-plugin')
-const { VueLoaderPlugin } = require('vue-loader')
-const { CleanWebpackPlugin } = require('clean-webpack-plugin')
-
+const __dirname = path.resolve() // ESM doesn't have __dirname
 const src = path.resolve(__dirname, 'src')
 const dist = path.resolve(__dirname, 'dist')
 
-module.exports = (env, argv) => {
+export default (env, argv) => {
   const IS_PRODUCTION = argv.mode === 'production'
 
   const config = {
+    mode: argv.mode,
     entry: './src/index.js',
     output: {
       path: dist,
@@ -24,26 +25,29 @@ module.exports = (env, argv) => {
         '@': src
       }
     },
-    mode: argv.mode,
     devServer: {
       static: dist,
-      // Enabled to be able to visit dev server from phones and other computers in the network
-      allowedHosts: 'all',
-      // Fallback to browser history API
-      historyApiFallback: true
+      allowedHosts: 'all',        // dev server accessible on network
+      historyApiFallback: true,   // SPA fallback
+      open: true,                 // auto-open browser
+      hot: true,                  // enable HMR
+      port: 8080
     },
-    plugins: [new HtmlWebpackPlugin(), new VueLoaderPlugin(), new CleanWebpackPlugin()],
+    plugins: [
+      new HtmlWebpackPlugin(),
+      new VueLoaderPlugin(),
+      new CleanWebpackPlugin(),
+      ...(IS_PRODUCTION
+        ? [new MiniCssExtractPlugin({ filename: '[contenthash].css' })]
+        : [])
+    ],
     module: {
       rules: [
         {
           test: /\.vue$/,
           loader: 'vue-loader',
           exclude: /node_modules/,
-          options: {
-            compilerOptions: {
-              whitespace: 'preserve'
-            }
-          }
+          options: { compilerOptions: { whitespace: 'preserve' } }
         },
         {
           test: /\.css$/,
@@ -51,11 +55,7 @@ module.exports = (env, argv) => {
             IS_PRODUCTION ? MiniCssExtractPlugin.loader : 'style-loader',
             {
               loader: 'css-loader',
-              options: {
-                modules: {
-                  localIdentName: '[local]'
-                }
-              }
+              options: { modules: { localIdentName: '[local]' } }
             }
           ]
         },
@@ -67,18 +67,13 @@ module.exports = (env, argv) => {
         {
           test: /\.(png|jpg|gif|svg|ico|webp)$/,
           loader: 'file-loader',
-          options: {
-            name: '[name].[ext]'
-          }
+          options: { name: '[name].[ext]' }
         }
       ]
     },
     optimization: {
       minimizer: [
-        // extend default plugins
-        `...`,
-        // HTML and JS are minified by default if config.mode === production.
-        // But for CSS we need to add this:
+        `...`, // keep Webpack defaults
         new CssMinimizerPlugin()
       ],
       splitChunks: {
@@ -91,15 +86,6 @@ module.exports = (env, argv) => {
         }
       }
     }
-  }
-
-  if (IS_PRODUCTION) {
-    // Put all CSS files to a single <link rel='stylesheet' href='...'>
-    config.plugins.push(
-      new MiniCssExtractPlugin({
-        filename: '[contenthash].css'
-      })
-    )
   }
 
   return config
