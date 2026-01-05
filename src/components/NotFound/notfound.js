@@ -1,7 +1,7 @@
 // Logic
 export default {
-    name: 'NotFoundComponent',
-    data() {
-        return { }
-    }
+  name: 'NotFoundComponent',
+  data() {
+    return {}
+  }
 }

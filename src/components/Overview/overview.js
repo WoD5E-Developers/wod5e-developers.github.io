@@ -1,7 +1,7 @@
 // Logic
 export default {
-    name: 'OverviewComponent',
-    data() {
-        return {}
-    }
+  name: 'OverviewComponent',
+  data() {
+    return {}
+  }
 }

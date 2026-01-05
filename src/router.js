@@ -4,10 +4,11 @@ import { createRouter, createWebHistory } from 'vue-router'
 // Main Components
 import OverviewComponent from '@/components/Overview/overview.vue'
 import ApiComponent from '@/components/API/api.vue'
+import ChangelogComponent from '@/components/Changelog/changelog.vue'
 import NotFoundComponent from '@/components/NotFound/notfound.vue'
 
 // Variables
-const baseTitle = "WOD5E for FoundryVTT"
+const baseTitle = 'WOD5E for FoundryVTT'
 
 // Define the routes
 const routes = [
@@ -42,12 +43,14 @@ const router = createRouter({
 // Handle events that happen before loading the next page
 router.beforeEach((to, from, next) => {
   if (to.href.match(/\/#/)) {
-    router.push(to.href.replace(/\#\//, ''))
+    router.push(to.href.replace(/#\//, ''))
   }
 
   // Handle updating the page title
   document.title = to.name ? to.name : baseTitle
-  document.head.querySelector("[property='og:title'][content]").content = to.name ? to.name : baseTitle
+  document.head.querySelector("[property='og:title'][content]").content = to.name
+    ? to.name
+    : baseTitle
 
   // Tell the router to go to the next page
   next()

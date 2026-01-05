@@ -1,10 +1,10 @@
 export default {
-  data () {
+  data() {
     return {}
   },
   methods: {
     // Toggle the collapsed state
-    toggleCollapse (event) {
+    toggleCollapse(event) {
       const target = event.target
       const container = target.closest('.collapsible-container')
       const content = container.querySelector('.collapsible-content')

@@ -1,5 +1,5 @@
 // Vue components
-import Navbar from "@/components/Navbar/navbar.vue"
+import Navbar from '@/components/Navbar/navbar.vue'
 
 // Logic
 export default {

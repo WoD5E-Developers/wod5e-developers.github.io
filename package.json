@@ -24,24 +24,32 @@
     "@fortawesome/free-regular-svg-icons": "^6.5.2",
     "@fortawesome/free-solid-svg-icons": "^6.5.2",
     "@fortawesome/vue-fontawesome": "^3.0.8",
+    "marked": "^17.0.1",
     "prismjs": "^1.29.0",
     "vue": "3.2.29",
     "vue-router": "^4.3.2"
   },
   "devDependencies": {
     "@babel/preset-env": "7.16.11",
+    "@eslint/compat": "^2.0.0",
     "babel-loader": "8.2.3",
     "clean-webpack-plugin": "4.0.0",
     "css-loader": "6.5.1",
     "css-minimizer-webpack-plugin": "3.4.1",
+    "eslint": "^9.39.2",
+    "eslint-plugin-import": "^2.32.0",
+    "eslint-plugin-prettier": "^5.5.4",
+    "eslint-plugin-vue": "^10.6.2",
     "file-loader": "6.2.0",
+    "globals": "^14.0.0",
     "html-webpack-plugin": "5.5.0",
     "mini-css-extract-plugin": "2.5.3",
     "style-loader": "3.3.1",
+    "vue-eslint-parser": "^10.2.0",
     "vue-loader": "17.0.0",
     "webpack": "^5.88.1",
     "webpack-cli": "^4.10.0",
-    "webpack-dev-server": "^4.15.2"
+    "webpack-dev-server": "^5.2.2"
   },
   "engines": {
     "node": "^20.10.0"

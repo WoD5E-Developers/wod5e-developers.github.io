@@ -1,4 +1,5 @@
 const path = require('path')
+
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin')
@@ -31,46 +32,46 @@ module.exports = (env, argv) => {
       // Fallback to browser history API
       historyApiFallback: true
     },
-    plugins: [
-      new HtmlWebpackPlugin(),
-      new VueLoaderPlugin(),
-      new CleanWebpackPlugin()
-    ],
+    plugins: [new HtmlWebpackPlugin(), new VueLoaderPlugin(), new CleanWebpackPlugin()],
     module: {
-      rules: [{
-        test: /\.vue$/,
-        loader: 'vue-loader',
-        exclude: /node_modules/,
-        options: {
-          compilerOptions: {
-            whitespace: 'preserve'
-          }
-        }
-      }, {
-        test: /\.css$/,
-        use: [
-          IS_PRODUCTION ? MiniCssExtractPlugin.loader : 'style-loader',
-          {
-            loader: 'css-loader',
-            options: {
-              modules: {
-                localIdentName: '[local]',
-              }
+      rules: [
+        {
+          test: /\.vue$/,
+          loader: 'vue-loader',
+          exclude: /node_modules/,
+          options: {
+            compilerOptions: {
+              whitespace: 'preserve'
             }
           }
-        ]
-      }, {
-        test: /\.js$/,
-        loader: 'babel-loader',
-        exclude: /node_modules/
-      },
-      {
-        test: /\.(png|jpg|gif|svg|ico|webp)$/,
-        loader: 'file-loader',
-        options: {
-          name: '[name].[ext]'
+        },
+        {
+          test: /\.css$/,
+          use: [
+            IS_PRODUCTION ? MiniCssExtractPlugin.loader : 'style-loader',
+            {
+              loader: 'css-loader',
+              options: {
+                modules: {
+                  localIdentName: '[local]'
+                }
+              }
+            }
+          ]
+        },
+        {
+          test: /\.js$/,
+          loader: 'babel-loader',
+          exclude: /node_modules/
+        },
+        {
+          test: /\.(png|jpg|gif|svg|ico|webp)$/,
+          loader: 'file-loader',
+          options: {
+            name: '[name].[ext]'
+          }
         }
-      }]
+      ]
     },
     optimization: {
       minimizer: [
@@ -85,19 +86,20 @@ module.exports = (env, argv) => {
           commons: {
             test: /[\\/]node_modules[\\/]/,
             name: 'node_modules',
-            chunks: 'all',
+            chunks: 'all'
           }
         }
       }
     }
   }
 
-
   if (IS_PRODUCTION) {
     // Put all CSS files to a single <link rel='stylesheet' href='...'>
-    config.plugins.push(new MiniCssExtractPlugin({
-      filename: '[contenthash].css'
-    }))
+    config.plugins.push(
+      new MiniCssExtractPlugin({
+        filename: '[contenthash].css'
+      })
+    )
   }
 
   return config
