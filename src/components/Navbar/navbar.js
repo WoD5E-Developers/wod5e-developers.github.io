@@ -10,7 +10,8 @@ export default {
       navbarimg,
       links: [
         { text: 'Overview', href: '/' },
-        { text: 'API', href: '/api' }
+        { text: 'API', href: '/api' },
+        { text: 'Changelog', href: '/changelog' }
       ]
     }
   },

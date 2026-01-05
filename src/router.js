@@ -22,6 +22,11 @@ const routes = [
     path: '/api',
     component: ApiComponent
   },
+  {
+    name: `${baseTitle} - Changelog`,
+    path: '/changelog',
+    component: ChangelogComponent
+  },
   // Add a component to redirect people from the old wod5e-docs site to the new one
   {
     path: '/wod5e-docs/',

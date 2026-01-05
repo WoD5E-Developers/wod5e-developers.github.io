@@ -1,0 +1,15 @@
+.content {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+}
+
+section {
+  padding: 10px;
+  flex-grow: 1;
+}
+
+section h1 {
+  text-align: center;
+}
