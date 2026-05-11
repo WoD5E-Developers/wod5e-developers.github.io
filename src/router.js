@@ -3,6 +3,7 @@ import { createRouter, createWebHistory } from 'vue-router'
 
 // Main Components
 import OverviewComponent from '@/components/Overview/overview.vue'
+import ModifiersComponent from '@/components/modifiers/modifiers.vue'
 import ApiComponent from '@/components/API/api.vue'
 import ChangelogComponent from '@/components/Changelog/changelog.vue'
 import NotFoundComponent from '@/components/NotFound/notfound.vue'
@@ -16,6 +17,11 @@ const routes = [
     name: `${baseTitle}`,
     path: '/',
     component: OverviewComponent
+  },
+  {
+    name: `${baseTitle} - Modifiers`,
+    path: '/modifiers',
+    component: ModifiersComponent
   },
   {
     name: `${baseTitle} - API`,
